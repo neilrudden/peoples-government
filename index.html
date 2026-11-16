@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102a43">
+  <meta name="description" content="The People's Government is a civic initiative exploring practical ways for people to participate in local decisions and strengthen public accountability in South Africa.">
+  <title>The People's Government — Your voice. Public accountability.</title>
+  <style>
+    :root {
+      --navy: #102a43;
+      --navy-2: #183b56;
+      --ink: #172b3a;
+      --muted: #5c7181;
+      --paper: #f7f8f5;
+      --white: #fff;
+      --teal: #1b9a8a;
+      --teal-dark: #13796e;
+      --gold: #f2bd55;
+      --line: #e3e9e8;
+      --radius: 20px;
+      --shadow: 0 18px 55px rgba(16,42,67,.10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.6; }
+    a { color: inherit; }
+    .wrap { width: min(1160px, calc(100% - 44px)); margin: 0 auto; }
+    .topline { height: 5px; background: linear-gradient(90deg, var(--teal) 0 62%, var(--gold) 62% 100%); }
+    header { position: sticky; top: 0; z-index: 20; background: rgba(247,248,245,.94); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(227,233,232,.85); }
+    .nav { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 800; letter-spacing: -.04em; color: var(--navy); font-size: 17px; }
+    .brand-mark { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--navy); color: var(--white); font-size: 19px; font-weight: 900; position: relative; }
+    .brand-mark:after { content: ""; position: absolute; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); right: -3px; top: -3px; border: 2px solid var(--paper); }
+    .navlinks { display: flex; align-items: center; gap: 28px; }
+    .navlinks a { text-decoration: none; font-size: 13px; font-weight: 700; color: #526777; transition: color .2s; }
+    .navlinks a:hover { color: var(--teal-dark); }
+    .nav-cta, .button { display: inline-flex; justify-content: center; align-items: center; gap: 9px; border-radius: 999px; padding: 12px 19px; font-size: 13px; font-weight: 800; text-decoration: none; transition: transform .2s, background .2s; }
+    .nav-cta, .button.primary { color: white; background: var(--teal-dark); }
+    .nav-cta:hover, .button:hover { transform: translateY(-2px); }
+    .menu { display: none; border: 0; background: transparent; color: var(--navy); font-size: 25px; cursor: pointer; }
+    .hero { background: var(--navy); color: white; overflow: hidden; position: relative; }
+    .hero:before { content: ""; position: absolute; width: 620px; height: 620px; border: 1px solid rgba(255,255,255,.10); border-radius: 50%; right: -120px; top: -290px; box-shadow: 0 0 0 70px rgba(255,255,255,.025), 0 0 0 140px rgba(255,255,255,.02); }
+    .hero:after { content: ""; position: absolute; width: 260px; height: 260px; border-radius: 50%; background: rgba(27,154,138,.18); filter: blur(5px); right: 15%; bottom: -190px; }
+    .hero-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 70px; padding-top: 100px; padding-bottom: 105px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; text-transform: uppercase; letter-spacing: .16em; font-size: 10px; font-weight: 900; color: #79d5c7; }
+    .eyebrow:before { content: ""; width: 25px; height: 2px; background: var(--gold); }
+    h1 { max-width: 730px; margin: 22px 0 22px; font-size: clamp(43px, 6.2vw, 76px); line-height: .99; letter-spacing: -.065em; }
+    h1 em { color: #78d4c6; font-style: normal; }
+    .hero-copy { max-width: 570px; color: #c4d2dc; font-size: 17px; line-height: 1.75; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .button.secondary { border: 1px solid rgba(255,255,255,.28); color: white; }
+    .hero-note { display: flex; align-items: center; gap: 12px; margin-top: 45px; color: #a8bbc8; font-size: 12px; }
+    .hero-note span { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+    .hero-art { min-height: 360px; position: relative; display: grid; place-items: center; }
+    .orbit { width: min(330px, 90%); aspect-ratio: 1; border: 1px solid rgba(255,255,255,.22); border-radius: 50%; position: relative; display: grid; place-items: center; }
+    .orbit:before, .orbit:after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; }
+    .orbit:before { inset: 28px; }
+    .orbit:after { inset: 58px; }
+    .core { z-index: 2; width: 132px; height: 132px; border-radius: 38px; background: linear-gradient(145deg, #2ab39f, #13796e); display: grid; place-items: center; text-align: center; box-shadow: 0 18px 60px rgba(0,0,0,.25); transform: rotate(-8deg); }
+    .core strong { transform: rotate(8deg); color: white; font-size: 19px; line-height: 1.1; letter-spacing: -.04em; }
+    .node { position: absolute; z-index: 3; display: grid; place-items: center; width: 62px; height: 62px; border-radius: 20px; background: #fff; color: var(--navy); box-shadow: 0 12px 35px rgba(0,0,0,.18); font-size: 24px; }
+    .node small { display: block; position: absolute; top: 68px; white-space: nowrap; color: #d1dce3; font-size: 10px; font-weight: 800; letter-spacing: .04em; }
+    .n1 { top: 1px; left: calc(50% - 31px); }.n2 { right: 0; top: calc(50% - 31px); }.n3 { bottom: 0; left: calc(50% - 31px); }.n4 { left: 0; top: calc(50% - 31px); }
+    section { padding: 94px 0; }
+    .section-head { max-width: 690px; margin-bottom: 42px; }
+    .kicker { color: var(--teal-dark); text-transform: uppercase; letter-spacing: .15em; font-size: 10px; font-weight: 900; }
+    h2 { margin: 13px 0 15px; color: var(--navy); font-size: clamp(32px, 4.2vw, 49px); letter-spacing: -.055em; line-height: 1.08; }
+    .lead { color: var(--muted); font-size: 16px; line-height: 1.8; }
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .principle { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; min-height: 230px; }
+    .principle .num { width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center; background: #e8f5f2; color: var(--teal-dark); font-weight: 900; font-size: 13px; }
+    .principle h3 { margin: 23px 0 9px; color: var(--navy); font-size: 19px; letter-spacing: -.03em; }
+    .principle p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+    .dark-section { background: #edf2f0; }
+    .split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 75px; align-items: center; }
+    .quote-card { background: var(--navy); color: white; padding: 40px; border-radius: 24px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .quote-card:after { content: "“"; position: absolute; right: 18px; top: -42px; font-family: Georgia, serif; font-size: 190px; color: rgba(255,255,255,.07); }
+    .quote-card .big { font-size: 27px; line-height: 1.35; letter-spacing: -.04em; font-weight: 750; position: relative; z-index: 1; }
+    .quote-card p { color: #b7c8d2; font-size: 13px; margin: 25px 0 0; }
+    .steps { display: grid; gap: 22px; }
+    .step { display: grid; grid-template-columns: 44px 1fr; gap: 17px; }
+    .step-icon { width: 42px; height: 42px; border-radius: 14px; background: white; display: grid; place-items: center; color: var(--teal-dark); font-weight: 900; }
+    .step h3 { margin: 0 0 5px; color: var(--navy); font-size: 17px; }
+    .step p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .pilot-card { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; padding: 38px; border-radius: 24px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow); }
+    .pilot-label { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #fff4dc; color: #8a5c12; font-size: 10px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .pilot-card h3 { margin: 16px 0 8px; color: var(--navy); font-size: 27px; letter-spacing: -.04em; }
+    .pilot-card p { margin: 0; max-width: 700px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .pilot-mark { width: 110px; height: 110px; border-radius: 30px; background: #e7f4f1; color: var(--teal-dark); display: grid; place-items: center; font-size: 43px; }
+    .roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); }
+    .phase { padding: 25px 22px 0 0; position: relative; }
+    .phase:before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--teal); position: absolute; top: -6px; left: 0; box-shadow: 0 0 0 5px var(--paper); }
+    .phase span { color: var(--teal-dark); font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: .1em; }
+    .phase h3 { margin: 12px 0 7px; color: var(--navy); font-size: 17px; }
+    .phase p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+    .join { background: var(--navy); color: white; padding: 78px 0; }
+    .join-inner { display: flex; justify-content: space-between; align-items: center; gap: 35px; }
+    .join h2 { color: white; max-width: 650px; margin-bottom: 10px; }
+    .join p { color: #b7c8d2; margin: 0; max-width: 620px; font-size: 14px; }
+    .join .button { background: var(--gold); color: var(--navy); white-space: nowrap; }
+    footer { background: #0b2033; color: #9fb1bd; padding: 28px 0; font-size: 11px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    footer strong { color: white; }
+    .footer-links { display: flex; gap: 18px; }
+    .footer-links a { color: #b9c7d0; text-decoration: none; }
+    @media (max-width: 800px) {
+      .navlinks { display: none; position: absolute; top: 78px; left: 0; right: 0; padding: 20px 24px 25px; background: var(--paper); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 18px; }
+      .navlinks.open { display: flex; }
+      .navlinks .nav-cta { text-align: center; }
+      .menu { display: block; }
+      .hero-inner { grid-template-columns: 1fr; gap: 15px; padding-top: 75px; padding-bottom: 65px; }
+      .hero-art { min-height: 300px; }
+      .split { grid-template-columns: 1fr; gap: 35px; }
+      .principles { grid-template-columns: 1fr; }
+      .principle { min-height: 0; }
+      .roadmap { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
+      .pilot-card { grid-template-columns: 1fr; }
+      .pilot-mark { display: none; }
+      .join-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: min(100% - 32px, 1160px); }
+      section { padding: 70px 0; }
+      .hero-inner { padding-top: 62px; }
+      .hero-copy { font-size: 15px; }
+      .hero-art { min-height: 255px; }
+      .orbit { width: 245px; }
+      .node { width: 50px; height: 50px; border-radius: 16px; font-size: 20px; }
+      .n1 { left: calc(50% - 25px); }.n2 { top: calc(50% - 25px); }.n3 { left: calc(50% - 25px); }.n4 { top: calc(50% - 25px); }
+      .node small { top: 55px; font-size: 8px; }
+      .core { width: 105px; height: 105px; border-radius: 30px; }
+      .core strong { font-size: 16px; }
+      .quote-card { padding: 29px; }
+      .quote-card .big { font-size: 23px; }
+      .pilot-card { padding: 27px; }
+      .roadmap { grid-template-columns: 1fr; gap: 22px; border-top: 0; border-left: 1px solid var(--line); margin-left: 5px; }
+      .phase { padding: 0 0 0 24px; }
+      .phase:before { top: 4px; left: -6px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <div class="topline"></div>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="The People's Government home"><span class="brand-mark">P</span><span>THE PEOPLE'S<br>GOVERNMENT</span></a>
+      <nav class="navlinks" id="navlinks" aria-label="Main navigation">
+        <a href="#why">Why it matters</a>
+        <a href="#approach">Our approach</a>
+        <a href="#pilot">Local pilot</a>
+        <a href="#roadmap">The plan</a>
+        <a class="nav-cta" href="#participate">Get involved <span aria-hidden="true">↗</span></a>
+      </nav>
+      <button class="menu" id="menu" aria-label="Open navigation" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <div>
+          <div class="eyebrow">A civic initiative for South Africa</div>
+          <h1>Government belongs to the <em>people.</em></h1>
+          <p class="hero-copy">A stronger democracy starts with people who can participate, ask questions and see what happens next. We're exploring practical ways to bring local voices closer to local decisions.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#approach">Discover the idea <span aria-hidden="true">→</span></a>
+            <a class="button secondary" href="#pilot">Explore the local pilot</a>
+          </div>
+          <div class="hero-note"><span></span> Independent civic initiative · South Africa</div>
+        </div>
+        <div class="hero-art" aria-label="Illustration representing people, participation and accountability">
+          <div class="orbit">
+            <div class="core"><strong>THE<br>PEOPLE</strong></div>
+            <div class="node n1">☝<small>VOICE</small></div>
+            <div class="node n2">◎<small>OPENNESS</small></div>
+            <div class="node n3">✓<small>ACTION</small></div>
+            <div class="node n4">↔<small>DIALOGUE</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">The idea</div>
+          <h2>Public decisions should never feel out of reach.</h2>
+          <p class="lead">People experience the results of public decisions every day — in their streets, services, schools and communities. Yet it can be difficult to know where to raise an issue, how to contribute, or whether anything changed.</p>
+        </div>
+        <div class="principles">
+          <article class="principle"><div class="num">01</div><h3>Make participation practical</h3><p>Give residents clearer ways to raise local priorities, contribute ideas and take part in constructive discussion.</p></article>
+          <article class="principle"><div class="num">02</div><h3>Make information accessible</h3><p>Help people understand the issues, the decisions being considered and the responsibilities of public institutions.</p></article>
+          <article class="principle"><div class="num">03</div><h3>Make follow-through visible</h3><p>Encourage clear updates on what was heard, what action is proposed and what progress has — or has not — been made.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section" id="approach">
+      <div class="wrap split">
+        <div class="quote-card">
+          <div class="big">A voice matters most when people can see that it was heard — and what happened because of it.</div>
+          <p>A principle for how this initiative should work.</p>
+        </div>
+        <div>
+          <div class="kicker">How it could work</div>
+          <h2>From community input to public accountability.</h2>
+          <p class="lead">The concept is deliberately straightforward. Start with a defined local area, listen to the issues residents identify, and create a transparent record of priorities and progress.</p>
+          <div class="steps">
+            <div class="step"><div class="step-icon">1</div><div><h3>Listen locally</h3><p>Residents identify the issues that matter most in their neighbourhood and share practical suggestions.</p></div></div>
+            <div class="step"><div class="step-icon">2</div><div><h3>Organise the priorities</h3><p>Group submissions into clear themes so common concerns and different perspectives can be understood.</p></div></div>
+            <div class="step"><div class="step-icon">3</div><div><h3>Track the response</h3><p>Publish updates that distinguish between issues raised, responses received, actions underway and unresolved matters.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pilot">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Start small. Build trust.</div>
+          <h2>A local pilot before a bigger platform.</h2>
+          <p class="lead">Rather than promise a national solution from day one, the initiative can be tested in one city or community. The first objective is to learn what residents actually need and prove that the process is useful, open and manageable.</p>
+        </div>
+        <div class="pilot-card">
+          <div>
+            <span class="pilot-label">Proposed first phase</span>
+            <h3>One community. Clear priorities. Visible progress.</h3>
+            <p>The pilot area, community partners and participation process still need to be agreed. The platform should be shaped with residents, not designed on their behalf.</p>
+          </div>
+          <div class="pilot-mark" aria-hidden="true">⌖</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">A measured roadmap</div>
+          <h2>Build it in the open.</h2>
+          <p class="lead">A credible civic platform needs clear rules, privacy safeguards and a transparent process. These are the proposed stages — not claims that the work is already complete.</p>
+        </div>
+        <div class="roadmap">
+          <article class="phase"><span>Phase 01</span><h3>Listen & define</h3><p>Agree the pilot location, priorities, community input and participation rules.</p></article>
+          <article class="phase"><span>Phase 02</span><h3>Build & test</h3><p>Create a simple, accessible platform and test it with a small group of residents.</p></article>
+          <article class="phase"><span>Phase 03</span><h3>Publish & report</h3><p>Share submissions in an appropriate, privacy-conscious way and report progress clearly.</p></article>
+          <article class="phase"><span>Phase 04</span><h3>Learn & improve</h3><p>Evaluate what worked, publish lessons and decide whether to expand.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="join" id="participate">
+      <div class="wrap join-inner">
+        <div>
+          <div class="eyebrow">The next step</div>
+          <h2>Help shape a government that listens.</h2>
+          <p>This is an early-stage initiative. The next step is to bring together people who want to help define the pilot, its safeguards and the way it will serve the public.</p>
+        </div>
+        <a class="button" href="https://github.com/neilrudden/peoples-government" target="_blank" rel="noopener noreferrer">View the project <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div><strong>THE PEOPLE'S GOVERNMENT</strong><br>Government belongs to the people. Accountability starts with us.</div>
+      <div class="footer-links"><a href="#top">Back to top ↑</a><a href="https://github.com/neilrudden/peoples-government" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+      <div>© <span id="year"></span> · Civic initiative</div>
+    </div>
+  </footer>
+  <script>
+    const menu = document.getElementById('menu');
+    const nav = document.getElementById('navlinks');
+    menu.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      menu.setAttribute('aria-expanded', String(open));
+      menu.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+      menu.textContent = open ? '×' : '☰';
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menu.setAttribute('aria-expanded', 'false');
+      menu.setAttribute('aria-label', 'Open navigation');
+      menu.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
