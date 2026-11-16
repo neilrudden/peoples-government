@@ -83,6 +83,27 @@
     .step-icon { width: 42px; height: 42px; border-radius: 14px; background: white; display: grid; place-items: center; color: var(--teal-dark); font-weight: 900; }
     .step h3 { margin: 0 0 5px; color: var(--navy); font-size: 17px; }
     .step p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .issue-section { background: #fff; }
+    .issue-panel { border: 1px solid var(--line); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); background: white; }
+    .issue-top { display: grid; grid-template-columns: 1.1fr .9fr; gap: 36px; padding: 38px; align-items: center; }
+    .issue-stat { background: var(--navy); color: white; padding: 28px; border-radius: 20px; }
+    .issue-stat strong { display: block; font-size: clamp(42px, 6vw, 64px); line-height: 1; letter-spacing: -.06em; color: #80d8ca; }
+    .issue-stat span { display: block; color: #d1dce3; font-size: 13px; margin-top: 10px; }
+    .issue-stat small { display: block; color: #aebfca; font-size: 11px; margin-top: 18px; line-height: 1.6; }
+    .issue-copy h3 { color: var(--navy); font-size: 25px; line-height: 1.2; letter-spacing: -.04em; margin: 12px 0; }
+    .issue-copy p { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .issue-bars { display: grid; gap: 13px; margin-top: 22px; }
+    .bar-row { display: grid; grid-template-columns: 48px 1fr auto; gap: 10px; align-items: center; color: var(--muted); font-size: 11px; }
+    .bar-track { height: 10px; background: #e9efed; border-radius: 99px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 99px; background: var(--teal); }
+    .issue-bottom { border-top: 1px solid var(--line); padding: 30px 38px 36px; background: #f8faf9; }
+    .issue-bottom h3 { margin: 0 0 8px; color: var(--navy); font-size: 20px; }
+    .issue-bottom > p { margin: 0 0 20px; color: var(--muted); font-size: 13px; }
+    .issue-questions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .issue-question { display: flex; gap: 12px; align-items: flex-start; padding: 15px; background: white; border: 1px solid var(--line); border-radius: 14px; color: var(--ink); font-size: 13px; line-height: 1.55; }
+    .issue-question b { color: var(--teal-dark); }
+    .source-note { font-size: 11px !important; color: #71818a !important; margin-top: 18px !important; }
+    .source-note a { color: var(--teal-dark); font-weight: 750; }
     .pilot-card { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; padding: 38px; border-radius: 24px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow); }
     .pilot-label { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #fff4dc; color: #8a5c12; font-size: 10px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
     .pilot-card h3 { margin: 16px 0 8px; color: var(--navy); font-size: 27px; letter-spacing: -.04em; }
@@ -114,6 +135,9 @@
       .split { grid-template-columns: 1fr; gap: 35px; }
       .principles { grid-template-columns: 1fr; }
       .principle { min-height: 0; }
+      .issue-top { grid-template-columns: 1fr; padding: 25px; }
+      .issue-bottom { padding: 25px; }
+      .issue-questions { grid-template-columns: 1fr; }
       .roadmap { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
       .pilot-card { grid-template-columns: 1fr; }
       .pilot-mark { display: none; }
@@ -150,6 +174,7 @@
       <nav class="navlinks" id="navlinks" aria-label="Main navigation">
         <a href="#why">Why it matters</a>
         <a href="#approach">Our approach</a>
+        <a href="#issue">Issue spotlight</a>
         <a href="#pilot">Local pilot</a>
         <a href="#roadmap">The plan</a>
         <a class="nav-cta" href="#participate">Get involved <span aria-hidden="true">↗</span></a>
@@ -214,6 +239,47 @@
             <div class="step"><div class="step-icon">3</div><div><h3>Track the response</h3><p>Publish updates that distinguish between issues raised, responses received, actions underway and unresolved matters.</p></div></div>
           </div>
         </div>
+      </div>
+    </section>
+
+
+    <section class="issue-section" id="issue">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">Issue spotlight · Cape Town</div>
+          <h2>Housing pressure is visible. What should happen next?</h2>
+          <p class="lead">A recent City of Cape Town report points to a sharp increase in mapped informal structures. This is a complex human and planning challenge — one that deserves evidence, lived experience and practical solutions, not blame.</p>
+        </div>
+        <article class="issue-panel">
+          <div class="issue-top">
+            <div class="issue-copy">
+              <span class="pilot-label">Reported change · 2016–2025</span>
+              <h3>Informal structures increased by about 67% in nine years.</h3>
+              <p>The City's latest Spatial Trends and Implementation Tracking Report records an increase from 169,330 mapped structures in 2016 to 283,379 in 2025. The mapped area of informality also grew from roughly 1,200 to more than 3,100 hectares.</p>
+              <p>These are counts of structures, not people or households. The City says the figure excludes areas of unlawful land occupation, so it should not be treated as a complete count of all informal structures.</p>
+            </div>
+            <div class="issue-stat" aria-label="Informal structures: 169,330 in 2016 and 283,379 in 2025">
+              <strong>+67%</strong>
+              <span>increase in mapped informal structures</span>
+              <div class="issue-bars">
+                <div class="bar-row"><span>2016</span><div class="bar-track"><div class="bar-fill" style="width:59.8%"></div></div><b>169,330</b></div>
+                <div class="bar-row"><span>2025</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><b>283,379</b></div>
+              </div>
+              <small>City of Cape Town figures as reported in its 9 November 2026 release.</small>
+            </div>
+          </div>
+          <div class="issue-bottom">
+            <h3>What should the public ask decision-makers to prioritise?</h3>
+            <p>These are discussion prompts for residents and community organisations — not a live vote. The platform does not yet collect or count votes.</p>
+            <div class="issue-questions">
+              <div class="issue-question"><b>01</b><span>Expand access to affordable, well-located housing and understand barriers to delivery.</span></div>
+              <div class="issue-question"><b>02</b><span>Improve water, sanitation, electricity, refuse removal and safe access in existing settlements.</span></div>
+              <div class="issue-question"><b>03</b><span>Identify suitable land and explain constraints such as flood risk, wetlands, transport and services.</span></div>
+              <div class="issue-question"><b>04</b><span>Publish clear budgets, targets, timelines and progress for housing and settlement upgrades.</span></div>
+            </div>
+            <p class="source-note">Sources: <a href="https://www.capetown.gov.za/media-and-news/city-issues-latest-spatial-trends-report-depicting-land-use-in-cape-town/" target="_blank" rel="noopener noreferrer">City of Cape Town: Spatial Trends Report (9 Nov 2026)</a> · <a href="https://www.thesouthafrican.com/news/informal-structures-in-cape-town-have-increased-by-67-in-nine-years/" target="_blank" rel="noopener noreferrer">The South African: report summary</a>. This issue spotlight is intended to prompt informed discussion; it does not imply endorsement by the City or affected communities.</p>
+          </div>
+        </article>
       </div>
     </section>
 
