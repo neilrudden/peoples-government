@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#292a2d">
+  <meta name="theme-color" content="#f7f9f7">
   <meta name="description" content="Daily Referendum is an independent South African civic participation and government accountability platform. Your voice. Your vote. Your government.">
   <title>Daily Referendum — Your voice. Your vote. Your government.</title>
   <style>
@@ -194,6 +194,46 @@
       .footer-inner { align-items: flex-start; flex-direction: column; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+
+    /* Inclusive light civic palette: flag colours are accents, not party-colour blocks. */
+    :root { --navy:#f7f9f7; --navy-2:#eef2ef; --ink:#263238; --muted:#657279; --paper:#f8faf8; --white:#fff; --teal:#007A4D; --teal-dark:#006641; --gold:#D99A16; --line:#e3e9e5; --shadow:0 18px 55px rgba(35,55,45,.08); }
+    body { background:var(--paper); color:var(--ink); }
+    header { background:rgba(250,252,250,.94); border-bottom-color:#e5ebe7; }
+    .brand-mark { background:#fff; color:#007A4D; border:1px solid #dfe8e2; text-shadow:none; box-shadow:0 3px 12px rgba(35,55,45,.07); }
+    .brand-mark:before { background:linear-gradient(135deg,#007A4D 0 32%,#FFB81C 32% 43%,#DE3831 43% 64%,#fff 64% 76%,#002395 76%); opacity:.13; }
+    .brand-mark:after { background:#FFB81C; }
+    .navlinks a { color:#52636a; } .navlinks a:hover { color:#007A4D; }
+    .nav-cta,.button.primary { background:#007A4D; color:#fff; }
+    .hero { background:linear-gradient(135deg,#f2f7f3 0%,#edf3ef 58%,#f8faf8 100%); color:#263238; }
+    .hero:before { border-color:rgba(0,122,77,.09); box-shadow:0 0 0 70px rgba(0,122,77,.025),0 0 0 140px rgba(0,122,77,.018); }
+    .hero:after { background:rgba(255,184,28,.13); }
+    .eyebrow { color:#52636a; } .eyebrow:before { background:#007A4D; }
+    h1 em { color:#007A4D; } .hero-copy { color:#52636a; }
+    .button.secondary { border-color:#bdcbc2; color:#34434a; }
+    .hero-note { color:#657279; } .hero-note span { background:#DE3831; }
+    .hero-art:after { background:radial-gradient(circle,rgba(0,122,77,.10),transparent 68%); }
+    .map-caption { color:#657279; }
+    .kicker { color:#007A4D; }
+    .principle .num { background:#edf5ef; color:#007A4D; }
+    .principle .num:after,.step-icon:after { background:#FFB81C; }
+    .dark-section,.daily-vote-section { background:#f0f4f1; }
+    .quote-card { background:#fff; color:#263238; border:1px solid var(--line); }
+    .quote-card:after { color:rgba(0,122,77,.07); }
+    .quote-card .big { color:#263238; } .quote-card p { color:#657279; }
+    .step-icon { background:#edf5ef; color:#007A4D; }
+    .issue-stat { background:#edf4ef; color:#263238; border:1px solid #dce8df; }
+    .issue-stat strong { color:#007A4D; }
+    .issue-stat span,.issue-stat small { color:#657279; }
+    .bar-fill { background:#007A4D; }
+    .daily-vote-icon { background:#edf5ef; color:#007A4D; }
+    .daily-vote-sources a,.vote-steps b { color:#007A4D; }
+    .pilot-mark { background:#edf5ef; color:#007A4D; }
+    .phase:before { background:#007A4D; }
+    .join { background:#edf4ef; color:#263238; border-top:1px solid var(--line); }
+    .join h2 { color:#263238; } .join p { color:#657279; }
+    .join .button { background:#007A4D; color:#fff; }
+    footer { background:#fff; color:#657279; border-top:1px solid var(--line); }
+    footer strong { color:#263238; } .footer-links a { color:#52636a; }
   </style>
 </head>
 <body>
