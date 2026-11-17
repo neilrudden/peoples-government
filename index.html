@@ -52,7 +52,16 @@
     .button.secondary { border: 1px solid rgba(255,255,255,.28); color: white; }
     .hero-note { display: flex; align-items: center; gap: 12px; margin-top: 45px; color: #c3c3bf; font-size: 12px; }
     .hero-note span { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
-    .hero-art { min-height: 360px; position: relative; display: grid; place-items: center; }
+    .hero-art { min-height: 360px; position: relative; display: grid; place-items: center; isolation: isolate; }
+    .flag-motif { position: absolute; z-index: -1; width: min(390px, 105%); aspect-ratio: 3 / 2; opacity: .92; filter: drop-shadow(0 22px 38px rgba(0,0,0,.24)); transform: rotate(-8deg); }
+    .flag-motif svg { display: block; width: 100%; height: 100%; }
+    .hero-art:after { content: ""; position: absolute; z-index: -2; width: 390px; height: 390px; border-radius: 50%; background: radial-gradient(circle, rgba(0,122,77,.22), transparent 68%); }
+    .brand-mark { overflow: hidden; isolation: isolate; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+    .brand-mark:before { content: ""; position: absolute; inset: 0; background: linear-gradient(145deg, #007A4D 0 48%, #FFB81C 48% 58%, #DE3831 58% 100%); opacity: .95; }
+    .brand-mark:after { z-index: 2; }
+    .flag-divider { height: 8px; background: linear-gradient(90deg, #DE3831 0 16.66%, #FFB81C 16.66% 33.33%, #000 33.33% 50%, #007A4D 50% 66.66%, #fff 66.66% 83.33%, #002395 83.33% 100%); }
+    .principle .num, .step-icon { position: relative; overflow: hidden; }
+    .principle .num:after, .step-icon:after { content: ""; position: absolute; width: 24px; height: 24px; right: -12px; bottom: -12px; background: #007A4D; transform: rotate(45deg); opacity: .18; }
     .orbit { width: min(330px, 90%); aspect-ratio: 1; border: 1px solid rgba(255,255,255,.28); border-radius: 50%; position: relative; display: grid; place-items: center; }
     .orbit:before, .orbit:after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; }
     .orbit:before { inset: 28px; }
@@ -196,7 +205,22 @@
           </div>
           <div class="hero-note"><span></span> Independent · Non-partisan · South Africa</div>
         </div>
-        <div class="hero-art" aria-label="Illustration representing people, participation and accountability">
+        <div class="hero-art" aria-label="South African flag motif representing people, participation and accountability">
+          <div class="flag-motif" aria-hidden="true">
+            <svg viewBox="0 0 450 300" role="img" aria-label="Stylised South African flag">
+              <defs><clipPath id="flagClip"><rect width="450" height="300" rx="16"/></clipPath></defs>
+              <g clip-path="url(#flagClip)">
+                <rect width="450" height="150" fill="#DE3831"/><rect y="150" width="450" height="150" fill="#002395"/>
+                <path d="M0 0 L225 0 L450 150 L225 300 L0 300 Z" fill="#fff"/>
+                <path d="M0 18 L198 18 L417 150 L198 282 L0 282 Z" fill="#FFB81C"/>
+                <path d="M0 36 L174 36 L394 150 L174 264 L0 264 Z" fill="#000"/>
+                <path d="M0 91 L112 91 L225 150 L112 209 L0 209 Z" fill="#fff"/>
+                <path d="M0 108 L112 108 L225 150 L112 192 L0 192 Z" fill="#007A4D"/>
+                <path d="M0 123 L95 123 L160 150 L95 177 L0 177 Z" fill="#FFB81C"/>
+                <path d="M0 135 L95 135 L130 150 L95 165 L0 165 Z" fill="#000"/>
+              </g>
+            </svg>
+          </div>
           <div class="orbit">
             <div class="core"><strong>THE<br>PEOPLE</strong></div>
             <div class="node n1">☝<small>VOICE</small></div>
@@ -208,6 +232,7 @@
       </div>
     </section>
 
+    <div class="flag-divider" aria-hidden="true"></div>
     <section id="why">
       <div class="wrap">
         <div class="section-head">
