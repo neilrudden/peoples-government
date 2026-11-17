@@ -9,7 +9,9 @@ export async function onRequest({ request, env }) {
   if (request.method !== "GET") return json({ error: "Method not allowed" }, 405);
   if (!env.DR_DB) return json({ vote: null, message: "The daily question is being prepared." }, 200);
 
-  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Africa/Johannesburg" }).format(new Date());
+  const parts = new Intl.DateTimeFormat("en-GB", { timeZone: "Africa/Johannesburg", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(new Date());
+  const part = type => parts.find(item => item.type === type)?.value;
+  const today = `${part("year")}-${part("month")}-${part("day")}`;
   const vote = await env.DR_DB.prepare(
     "SELECT id, title, question, context, sources_json, scheduled_for FROM suggestions WHERE status = 'approved' AND scheduled_for <= ? ORDER BY scheduled_for DESC, approved_at DESC LIMIT 1"
   ).bind(today).first();
