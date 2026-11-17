@@ -121,6 +121,9 @@
     .daily-vote-icon { width: 76px; height: 76px; border-radius: 22px; display: grid; place-items: center; color: #fff; background: #292a2d; font-size: 42px; font-weight: 800; }
     .daily-vote-content h3 { margin: 0 0 10px; font-size: 26px; letter-spacing: -.04em; }
     .daily-vote-content p { max-width: 760px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .daily-vote-content .daily-vote-context { margin-top: 12px; }
+    .daily-vote-sources { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 15px; font-size: 12px; }
+    .daily-vote-sources a { color: #007A4D; font-weight: 750; }
     .vote-steps { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 24px; color: #52565a; font-size: 12px; font-weight: 750; }
     .vote-steps b { color: #007A4D; margin-right: 5px; }
     .daily-vote-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 34px; background: #f7f7f5; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
@@ -318,12 +321,14 @@
           <p class="lead">Each day, the platform will feature one carefully researched public question. Suggestions are reviewed and approved by an editor before a question can appear here or open for public voting.</p>
         </div>
         <article class="daily-vote-card">
-          <div class="daily-vote-status"><span class="status-dot"></span> EDITORIAL PROCESS · NOT YET OPEN FOR VOTING</div>
+          <div class="daily-vote-status" id="daily-vote-status"><span class="status-dot"></span> EDITORIAL PROCESS · NOT YET OPEN FOR VOTING</div>
           <div class="daily-vote-content">
             <div class="daily-vote-icon" aria-hidden="true">?</div>
             <div>
-              <h3>Today's public question is being curated.</h3>
-              <p>We are establishing the research, neutrality and approval process first. No draft suggestion or unapproved question will be visible as a public vote.</p>
+              <h3 id="daily-vote-title">Today's public question is being curated.</h3>
+              <p id="daily-vote-question">We are establishing the research, neutrality and approval process first. No draft suggestion or unapproved question will be visible as a public vote.</p>
+              <p id="daily-vote-context" class="daily-vote-context"></p>
+              <div id="daily-vote-sources" class="daily-vote-sources"></div>
               <div class="vote-steps">
                 <span><b>01</b> Suggest</span><span><b>02</b> Fact-check</span><span><b>03</b> Approve</span><span><b>04</b> Publish</span>
               </div>
@@ -406,6 +411,37 @@
       menu.textContent = '☰';
     }));
     document.getElementById('year').textContent = new Date().getFullYear();
+    async function loadDailyVote() {
+      try {
+        const response = await fetch('/api/vote-of-day', { headers: { accept: 'application/json' } });
+        if (!response.ok) return;
+        const data = await response.json();
+        if (!data.vote) return;
+        const vote = data.vote;
+        document.getElementById('daily-vote-status').textContent = 'APPROVED · PUBLISHED QUESTION';
+        document.getElementById('daily-vote-title').textContent = vote.title;
+        document.getElementById('daily-vote-question').textContent = vote.question;
+        document.getElementById('daily-vote-context').textContent = vote.context || '';
+        const sourceBox = document.getElementById('daily-vote-sources');
+        sourceBox.replaceChildren();
+        (vote.sources || []).forEach((url, index) => {
+          try {
+            const parsed = new URL(url);
+            if (parsed.protocol !== 'https:') return;
+            const link = document.createElement('a');
+            link.href = parsed.href;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.textContent = 'Source ' + (index + 1) + ' ↗';
+            sourceBox.append(link);
+          } catch {}
+        });
+        document.querySelector('.daily-vote-footer span').textContent = 'Approved for publication on ' + vote.published_for + '.';
+      } catch {
+        // The public landing page remains useful while the editorial service is being configured.
+      }
+    }
+    loadDailyVote();
   </script>
 </body>
 </html>
