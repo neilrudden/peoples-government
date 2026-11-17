@@ -53,8 +53,9 @@
     .hero-note { display: flex; align-items: center; gap: 12px; margin-top: 45px; color: #c3c3bf; font-size: 12px; }
     .hero-note span { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
     .hero-art { min-height: 360px; position: relative; display: grid; place-items: center; isolation: isolate; }
-    .flag-motif { position: absolute; z-index: -1; width: min(390px, 105%); aspect-ratio: 3 / 2; opacity: .92; filter: drop-shadow(0 22px 38px rgba(0,0,0,.24)); transform: rotate(-8deg); }
-    .flag-motif svg { display: block; width: 100%; height: 100%; }
+    .map-graphic { width: min(390px, 100%); position: relative; filter: drop-shadow(0 22px 38px rgba(0,0,0,.28)); }
+    .map-graphic img { display: block; width: 100%; height: auto; object-fit: contain; }
+    .map-caption { margin-top: 16px; color: #d8d8d4; font-size: 10px; font-weight: 900; letter-spacing: .18em; text-align: center; }
     .hero-art:after { content: ""; position: absolute; z-index: -2; width: 390px; height: 390px; border-radius: 50%; background: radial-gradient(circle, rgba(0,122,77,.22), transparent 68%); }
     .brand-mark { overflow: hidden; isolation: isolate; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
     .brand-mark:before { content: ""; position: absolute; inset: 0; background: linear-gradient(145deg, #007A4D 0 48%, #FFB81C 48% 58%, #DE3831 58% 100%); opacity: .95; }
