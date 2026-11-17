@@ -113,6 +113,17 @@
     .issue-question b { color: #55565a; }
     .source-note { font-size: 11px !important; color: #71818a !important; margin-top: 18px !important; }
     .source-note a { color: #55565a; font-weight: 750; }
+    .daily-vote-section { background: #f0f0ed; }
+    .daily-vote-card { background: #fff; border: 1px solid var(--line); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
+    .daily-vote-status { display: flex; align-items: center; gap: 10px; padding: 17px 28px; border-bottom: 1px solid var(--line); color: #6b5a36; background: #fff9e9; font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #d79b24; }
+    .daily-vote-content { display: grid; grid-template-columns: 82px 1fr; gap: 24px; align-items: start; padding: 34px; }
+    .daily-vote-icon { width: 76px; height: 76px; border-radius: 22px; display: grid; place-items: center; color: #fff; background: #292a2d; font-size: 42px; font-weight: 800; }
+    .daily-vote-content h3 { margin: 0 0 10px; font-size: 26px; letter-spacing: -.04em; }
+    .daily-vote-content p { max-width: 760px; margin: 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .vote-steps { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 24px; color: #52565a; font-size: 12px; font-weight: 750; }
+    .vote-steps b { color: #007A4D; margin-right: 5px; }
+    .daily-vote-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 22px 34px; background: #f7f7f5; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
     .pilot-card { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; padding: 38px; border-radius: 24px; background: white; border: 1px solid var(--line); box-shadow: var(--shadow); }
     .pilot-label { display: inline-block; padding: 6px 10px; border-radius: 999px; background: #fff4dc; color: #8a5c12; font-size: 10px; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
     .pilot-card h3 { margin: 16px 0 8px; color: var(--ink); font-size: 27px; letter-spacing: -.04em; }
@@ -141,6 +152,7 @@
       .menu { display: block; }
       .hero-inner { grid-template-columns: 1fr; gap: 15px; padding-top: 75px; padding-bottom: 65px; }
       .hero-art { min-height: 300px; }
+      .map-graphic { width: min(330px, 88%); }
       .split { grid-template-columns: 1fr; gap: 35px; }
       .principles { grid-template-columns: 1fr; }
       .principle { min-height: 0; }
@@ -149,6 +161,8 @@
       .issue-questions { grid-template-columns: 1fr; }
       .roadmap { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
       .pilot-card { grid-template-columns: 1fr; }
+      .daily-vote-content { grid-template-columns: 1fr; padding: 26px; }
+      .daily-vote-footer { align-items: flex-start; flex-direction: column; padding: 22px 26px; }
       .pilot-mark { display: none; }
       .join-inner { align-items: flex-start; flex-direction: column; }
     }
@@ -158,6 +172,7 @@
       .hero-inner { padding-top: 62px; }
       .hero-copy { font-size: 15px; }
       .hero-art { min-height: 255px; }
+      .map-graphic { width: min(280px, 85%); }
       .orbit { width: 245px; }
       .node { width: 50px; height: 50px; border-radius: 16px; font-size: 20px; }
       .n1 { left: calc(50% - 25px); }.n2 { top: calc(50% - 25px); }.n3 { left: calc(50% - 25px); }.n4 { top: calc(50% - 25px); }
@@ -167,6 +182,8 @@
       .quote-card { padding: 29px; }
       .quote-card .big { font-size: 23px; }
       .pilot-card { padding: 27px; }
+      .daily-vote-status { padding: 15px 20px; font-size: 9px; }
+      .daily-vote-content h3 { font-size: 22px; }
       .roadmap { grid-template-columns: 1fr; gap: 22px; border-top: 0; border-left: 1px solid var(--line); margin-left: 5px; }
       .phase { padding: 0 0 0 24px; }
       .phase:before { top: 4px; left: -6px; }
@@ -184,6 +201,7 @@
         <a href="#why">Our mission</a>
         <a href="#approach">How it works</a>
         <a href="#issue">Public issues</a>
+        <a href="#daily-vote">Daily vote</a>
         <a href="#pilot">Get involved</a>
         <a href="#roadmap">Launch plan</a>
         <a class="nav-cta" href="#participate">Get involved <span aria-hidden="true">↗</span></a>
@@ -205,30 +223,13 @@
           </div>
           <div class="hero-note"><span></span> Independent · Non-partisan · South Africa</div>
         </div>
-        <div class="hero-art" aria-label="South African flag motif representing people, participation and accountability">
-          <div class="flag-motif" aria-hidden="true">
-            <!-- Accurate 3:2 South African national flag, following Constitution Schedule 1. -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 60" role="img" aria-label="South African national flag">
-              <defs>
-                <clipPath id="flagClip"><path d="M0 0h90v60H0z"/></clipPath>
-                <clipPath id="blackTriangleClip"><path d="M0 0 45 30 0 60z"/></clipPath>
-              </defs>
-              <path fill="#E03C31" d="M0 0h90v30H45z"/>
-              <path fill="#001489" d="M0 60h90V30H45z"/>
-              <g clip-path="url(#flagClip)" fill="none">
-                <path stroke="#fff" stroke-width="20" d="M90 30H45L0 0v60l45-30"/>
-                <path fill="#000" stroke="#FFB81C" stroke-width="20" clip-path="url(#blackTriangleClip)" d="M0 0 45 30 0 60"/>
-                <path stroke="#007749" stroke-width="12" d="M0 0 45 30h45M0 60l45-30"/>
-              </g>
-            </svg>      </svg>
+        <div class="hero-art" aria-label="Outline of South Africa filled with the national flag">
+          <div class="map-graphic">
+            <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Flag-map_of_South_Africa.svg"
+              alt="Map silhouette of South Africa filled with the South African national flag"
+              loading="eager" decoding="async">
           </div>
-          <div class="orbit">
-            <div class="core"><strong>THE<br>PEOPLE</strong></div>
-            <div class="node n1">☝<small>VOICE</small></div>
-            <div class="node n2">◎<small>OPENNESS</small></div>
-            <div class="node n3">✓<small>ACTION</small></div>
-            <div class="node n4">↔<small>DIALOGUE</small></div>
-          </div>
+          <div class="map-caption">ONE NATION · MANY VOICES</div>
         </div>
       </div>
     </section>
@@ -309,6 +310,33 @@
       </div>
     </section>
 
+    <section class="daily-vote-section" id="daily-vote">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker">The daily referendum</div>
+          <h2>A question worth considering. Every day.</h2>
+          <p class="lead">Each day, the platform will feature one carefully researched public question. Suggestions are reviewed and approved by an editor before a question can appear here or open for public voting.</p>
+        </div>
+        <article class="daily-vote-card">
+          <div class="daily-vote-status"><span class="status-dot"></span> EDITORIAL PROCESS · NOT YET OPEN FOR VOTING</div>
+          <div class="daily-vote-content">
+            <div class="daily-vote-icon" aria-hidden="true">?</div>
+            <div>
+              <h3>Today's public question is being curated.</h3>
+              <p>We are establishing the research, neutrality and approval process first. No draft suggestion or unapproved question will be visible as a public vote.</p>
+              <div class="vote-steps">
+                <span><b>01</b> Suggest</span><span><b>02</b> Fact-check</span><span><b>03</b> Approve</span><span><b>04</b> Publish</span>
+              </div>
+            </div>
+          </div>
+          <div class="daily-vote-footer">
+            <span>Public voting will open only after an authorised editor approves the question.</span>
+            <a class="button primary" href="#participate">Follow the launch <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="pilot">
       <div class="wrap">
         <div class="section-head">
@@ -359,7 +387,7 @@
     <div class="wrap footer-inner">
       <div><strong>DAILY REFERENDUM</strong><br>Your voice. Your vote. Your government.</div>
       <div class="footer-links"><a href="#top">Back to top ↑</a><a href="https://github.com/neilrudden/peoples-government" target="_blank" rel="noopener noreferrer">Project repository</a></div>
-      <div>© <span id="year"></span> · Civic initiative</div>
+      <div>© <span id="year"></span> · Civic initiative · Flag-map artwork: <a href="https://commons.wikimedia.org/wiki/File:Flag-map_of_South_Africa.svg" target="_blank" rel="noopener noreferrer">Clapsus, CC BY-SA 3.0</a></div>
     </div>
   </footer>
   <script>
