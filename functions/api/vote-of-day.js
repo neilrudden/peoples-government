@@ -13,7 +13,7 @@ export async function onRequest({ request, env }) {
   const part = type => parts.find(item => item.type === type)?.value;
   const today = `${part("year")}-${part("month")}-${part("day")}`;
   const vote = await env.DR_DB.prepare(
-    "SELECT id, title, question, context, sources_json, scheduled_for FROM suggestions WHERE status = 'approved' AND scheduled_for <= ? ORDER BY scheduled_for DESC, approved_at DESC LIMIT 1"
+    "SELECT id, title, question, context, sources_json, scheduled_for FROM suggestions WHERE status = 'approved' AND scheduled_for = ? ORDER BY approved_at DESC LIMIT 1"
   ).bind(today).first();
 
   if (!vote) return json({ vote: null, message: "The daily question is being prepared." });
