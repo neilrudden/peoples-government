@@ -207,19 +207,20 @@
         </div>
         <div class="hero-art" aria-label="South African flag motif representing people, participation and accountability">
           <div class="flag-motif" aria-hidden="true">
-            <svg viewBox="0 0 450 300" role="img" aria-label="Stylised South African flag">
-              <defs><clipPath id="flagClip"><rect width="450" height="300" rx="16"/></clipPath></defs>
-              <g clip-path="url(#flagClip)">
-                <rect width="450" height="150" fill="#DE3831"/><rect y="150" width="450" height="150" fill="#002395"/>
-                <path d="M0 0 L225 0 L450 150 L225 300 L0 300 Z" fill="#fff"/>
-                <path d="M0 18 L198 18 L417 150 L198 282 L0 282 Z" fill="#FFB81C"/>
-                <path d="M0 36 L174 36 L394 150 L174 264 L0 264 Z" fill="#000"/>
-                <path d="M0 91 L112 91 L225 150 L112 209 L0 209 Z" fill="#fff"/>
-                <path d="M0 108 L112 108 L225 150 L112 192 L0 192 Z" fill="#007A4D"/>
-                <path d="M0 123 L95 123 L160 150 L95 177 L0 177 Z" fill="#FFB81C"/>
-                <path d="M0 135 L95 135 L130 150 L95 165 L0 165 Z" fill="#000"/>
+            <!-- Accurate 3:2 South African national flag, following Constitution Schedule 1. -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 60" role="img" aria-label="South African national flag">
+              <defs>
+                <clipPath id="flagClip"><path d="M0 0h90v60H0z"/></clipPath>
+                <clipPath id="blackTriangleClip"><path d="M0 0 45 30 0 60z"/></clipPath>
+              </defs>
+              <path fill="#E03C31" d="M0 0h90v30H45z"/>
+              <path fill="#001489" d="M0 60h90V30H45z"/>
+              <g clip-path="url(#flagClip)" fill="none">
+                <path stroke="#fff" stroke-width="20" d="M90 30H45L0 0v60l45-30"/>
+                <path fill="#000" stroke="#FFB81C" stroke-width="20" clip-path="url(#blackTriangleClip)" d="M0 0 45 30 0 60"/>
+                <path stroke="#007749" stroke-width="12" d="M0 0 45 30h45M0 60l45-30"/>
               </g>
-            </svg>
+            </svg>      </svg>
           </div>
           <div class="orbit">
             <div class="core"><strong>THE<br>PEOPLE</strong></div>
